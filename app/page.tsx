@@ -25,28 +25,34 @@ export default function App() {
     listTodos();
   }, []);
 
+
+
   function createTodo() {
     client.models.Todo.create({
       content: window.prompt("Todo content"),
     });
   }
-
+  
+  function deleteTodo(id: string) {
+    client.models.Todo.delete({ id })
+  }
   return (
     <main>
-      <h1>My todos</h1>
-      <button onClick={createTodo}>+ new</button>
+      <h1>FenCaka'ya Hoş Geldiniz.</h1>
+      <button onClick={createTodo}>+ Yeni Ders</button>
       <ul>
         {todos.map((todo) => (
-          <li key={todo.id}>{todo.content}</li>
+          <li 
+          onClick={() => deleteTodo(todo.id)} key={todo.id}>{todo.content}</li>
         ))}
       </ul>
       <div>
-        🥳 App successfully hosted. Try creating a new todo.
+        🥳 FenCaka'ya Hoş Geldiniz.
         <br />
-        <a href="https://docs.amplify.aws/nextjs/start/quickstart/nextjs-app-router-client-components/">
-          Review next steps of this tutorial.
+        <a href="#">
+          FenLab
         </a>
       </div>
     </main>
-  );
+  );no
 }
